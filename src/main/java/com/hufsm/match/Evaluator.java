@@ -1,21 +1,21 @@
-package com.hufsm.game;
+package com.hufsm.match;
 
+import com.hufsm.game.Result;
+import com.hufsm.game.Shape;
 import com.hufsm.player.Player;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
-@Singleton
 public class Evaluator {
 
     private Player player1;
     private Player player2;
 
-    @Inject
     public Evaluator(
-            @Named("humanPlayer") Player player1,
-            @Named("aiPlayer") Player player2
+            Player player1,
+            Player player2
     ) {
         this.player1 = player1;
         this.player2 = player2;

@@ -1,51 +1,33 @@
 package com.hufsm.game;
 
 import com.hufsm.AppComponent;
+import com.hufsm.match.Match;
+import com.hufsm.match.MatchFactory;
 import com.hufsm.player.Player;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.Scanner;
 
 public class Game {
 
-    @Inject
-    @Named("humanPlayer")
-    Player player1;
+    private Scanner scanner;
+    private MatchFactory matchFactory;
 
     @Inject
-    @Named("humanPlayer")
-    Player player2;
-
-    @Inject
-    Evaluator evaluator;
-
-    @Inject
-    public Game(AppComponent appComponent) {
-        appComponent.inject(this);
+    public Game(Scanner scanner, MatchFactory matchFactory) {
+        this.scanner = scanner;
+        this.matchFactory = matchFactory;
     }
 
     public void start() {
         System.out.println("Hi! Lets play rock-paper-scissors!!!");
 
         while (true) {
-            System.out.println("\n\n%%%%%%%%%%%% NEW MATCH");
+            System.out.println("\n\nDo you want to start a new match?");
+            scanner.nextLine();
 
-            Shape player1Shape = player1.chooseShape();
-            Shape player2Shape = player2.chooseShape();
-
-            System.out.println(player1.getName() + " chose " + player1Shape);
-            System.out.println(player2.getName() + " chose " + player2Shape);
-
-            Result result = evaluator.evaluate(player1Shape, player2Shape);
-
-            switch (result.outcome) {
-                case WIN:
-                    System.out.println(result.winner.getName() + " won!");
-                    break;
-                case TIE:
-                    System.out.println("It's a tie!");
-                    break;
-            }
+            matchFactory.create().start();
         }
     }
 }

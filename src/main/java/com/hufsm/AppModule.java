@@ -1,7 +1,8 @@
 package com.hufsm;
 
-import com.hufsm.game.Evaluator;
-import com.hufsm.game.Game;
+import com.hufsm.match.Match;
+import com.hufsm.match.MatchComponent;
+import com.hufsm.match.MatchFactory;
 import com.hufsm.player.AIPlayer;
 import com.hufsm.player.HumanPlayer;
 import com.hufsm.player.Player;
@@ -14,7 +15,9 @@ import javax.inject.Singleton;
 import java.util.Random;
 import java.util.Scanner;
 
-@Module
+@Module(subcomponents = {
+        MatchComponent.class
+})
 public abstract class AppModule {
 
     @Singleton
@@ -37,5 +40,16 @@ public abstract class AppModule {
     @Binds
     @Named("aiPlayer")
     public abstract Player bindAIPlayer(AIPlayer aiPlayer);
+
+
+    @Provides
+    public static MatchFactory provideMatchFactory(MatchComponent.Builder matchComponentBuilder) {
+        return new MatchFactory() {
+            @Override
+            public Match create() {
+                return matchComponentBuilder.build().getMatch();
+            }
+        };
+    }
 
 }

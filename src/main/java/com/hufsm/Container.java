@@ -1,7 +1,6 @@
 package com.hufsm;
 
-import com.hufsm.game.Evaluator;
-import com.hufsm.game.Game;
+import com.hufsm.match.Evaluator;
 import com.hufsm.player.AIPlayer;
 import com.hufsm.player.HumanPlayer;
 import com.hufsm.player.Player;
