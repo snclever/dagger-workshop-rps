@@ -1,23 +1,19 @@
 package com.hufsm;
 
-import java.util.Random;
-import java.util.Scanner;
-
 public class Game {
 
     private Player player1;
     private Player player2;
     private Evaluator evaluator;
 
-    public Game() {
-        Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
-
-        player1 = new HumanPlayer(scanner);
-//        player1 = new AIPlayer(random);
-        player2 = new AIPlayer(random);
-
-        evaluator = new Evaluator(player1, player2);
+    public Game(
+            Player player1,
+            Player player2,
+            Evaluator evaluator
+    ) {
+        this.player1 = player1;
+        this.player2 = player2;
+        this.evaluator = evaluator;
     }
 
     public void start() {
