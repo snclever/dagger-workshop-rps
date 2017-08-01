@@ -1,4 +1,6 @@
-package com.hufsm;
+package com.hufsm.game;
+
+import com.hufsm.player.Player;
 
 public class Result {
 

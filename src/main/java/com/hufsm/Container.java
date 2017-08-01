@@ -1,5 +1,11 @@
 package com.hufsm;
 
+import com.hufsm.game.Evaluator;
+import com.hufsm.game.Game;
+import com.hufsm.player.AIPlayer;
+import com.hufsm.player.HumanPlayer;
+import com.hufsm.player.Player;
+
 import java.util.Random;
 import java.util.Scanner;
 

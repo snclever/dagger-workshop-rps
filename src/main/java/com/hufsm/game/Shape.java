@@ -1,4 +1,4 @@
-package com.hufsm;
+package com.hufsm.game;
 
 public enum Shape {
     ROCK,

@@ -1,4 +1,6 @@
-package com.hufsm;
+package com.hufsm.player;
+
+import com.hufsm.game.Shape;
 
 import java.util.Random;
 
