@@ -1,21 +1,27 @@
 package com.hufsm.game;
 
+import com.hufsm.AppComponent;
 import com.hufsm.player.Player;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 
 public class Game {
 
-    private Player player1;
-    private Player player2;
-    private Evaluator evaluator;
+    @Inject
+    @Named("humanPlayer")
+    Player player1;
 
-    public Game(
-            Player player1,
-            Player player2,
-            Evaluator evaluator
-    ) {
-        this.player1 = player1;
-        this.player2 = player2;
-        this.evaluator = evaluator;
+    @Inject
+    @Named("humanPlayer")
+    Player player2;
+
+    @Inject
+    Evaluator evaluator;
+
+    @Inject
+    public Game(AppComponent appComponent) {
+        appComponent.inject(this);
     }
 
     public void start() {

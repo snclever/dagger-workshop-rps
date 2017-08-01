@@ -5,6 +5,7 @@ import com.hufsm.game.Game;
 import com.hufsm.player.AIPlayer;
 import com.hufsm.player.HumanPlayer;
 import com.hufsm.player.Player;
+import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 
@@ -14,48 +15,27 @@ import java.util.Random;
 import java.util.Scanner;
 
 @Module
-public class AppModule {
+public abstract class AppModule {
 
     @Singleton
     @Provides
-    public Scanner provideScanner() {
+    public static Scanner provideScanner() {
         return new Scanner(System.in);
     }
 
     @Provides
-    public Random provideRandom() {
+    public static Random provideRandom() {
         return new Random();
     }
 
     @Singleton
-    @Provides
+    @Binds
     @Named("humanPlayer")
-    public Player provideHumanPlayer(Scanner scanner) {
-        return new HumanPlayer(scanner);
-    }
+    public abstract Player bindHumanPlayer(HumanPlayer humanPlayer);
 
     @Singleton
-    @Provides
+    @Binds
     @Named("aiPlayer")
-    public Player provideAIPlayer(Random random) {
-        return new AIPlayer(random);
-    }
+    public abstract Player bindAIPlayer(AIPlayer aiPlayer);
 
-    @Singleton
-    @Provides
-    public Evaluator provideEvaluator(
-            @Named("humanPlayer") Player player1,
-            @Named("aiPlayer") Player player2
-    ) {
-        return new Evaluator(player1, player2);
-    }
-
-    @Provides
-    public Game provideGame(
-            @Named("humanPlayer") Player player1,
-            @Named("aiPlayer") Player player2,
-            Evaluator evaluator
-    ) {
-        return new Game(player1, player2, evaluator);
-    }
 }

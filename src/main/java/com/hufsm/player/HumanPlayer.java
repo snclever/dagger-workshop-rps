@@ -2,13 +2,17 @@ package com.hufsm.player;
 
 import com.hufsm.game.Shape;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.util.Scanner;
 
+@Singleton
 public class HumanPlayer implements Player {
 
     private Scanner scanner;
     private String name;
 
+    @Inject
     public HumanPlayer(Scanner scanner) {
         this.scanner = scanner;
 

@@ -13,6 +13,7 @@ import java.util.Scanner;
 })
 public interface AppComponent {
 
-    Game getGame();
+    void inject(Game game);
 
+    Game getGame();
 }

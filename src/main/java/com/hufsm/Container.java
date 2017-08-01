@@ -55,8 +55,8 @@ public class Container {
         return evaluator;
     }
 
-    public Game getGame() {
-        return new Game(getPlayer1(), getPlayer2(), getEvaluator());
-    }
+//    public Game getGame() {
+//        return new Game(getPlayer1(), getPlayer2(), getEvaluator());
+//    }
 
 }
